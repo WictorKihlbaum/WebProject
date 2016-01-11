@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="google-signin-scope" content="https://www.googleapis.com/auth/drive profile email">
+        <meta name="google-signin-client_id" content="788591829115-1uq193qnm8r72ujqej7l3hdj558hj7ej.apps.googleusercontent.com">
+		<title>Picme Contact</title>
+        <!-- Skeleton CSS Framework -->
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="css/skeleton.css">
+        <!-- Mainstyle CSS -->
+        <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+        <!-- Navigation CSS -->
+        <link rel="stylesheet" type="text/css" href="css/nav.css">
+        <!-- Contact Subpage CSS -->
+        <link rel="stylesheet" type="text/css" href="css/contact.css">
+        <!-- Adobe Typekit Fonts (Place in header according to Adobe) -->
+        <script src="https://use.typekit.net/fni2mbz.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	</head>
+	<body>
+    	<header>
+        	<img src="#" id="profile-image" title="Profile picture" alt="Profile picture" style="display: none"/>
+            <h1 id="website-name">Picme</h1>
+            <!-- Google login/logout button -->
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <a href="#" id="signout-button" onclick="signOut()">Sign out</a>
+        </header>
+        <main>
+        
+        	<nav>
+            	<ul>
+                	<li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li id="active"><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <h1 class="main-topic">Contact</h1>
+            
+            <div id="contact-container">
+            	<p id="contact-text">
+                    If you are experiencing any technical issues or just want to report some bugs which you've 
+                    encountered do not hesitate to contact me. You can contact me by Facebook, Twitter or my Gmail-address
+                    which are listed here below.
+                </p>
+                
+            	<p><span id="facebook-text">Facebook</span>: <a href="https://www.facebook.com/wictor.kihlbaum">facebook.com/wictor.kihlbaum</a></p>
+                <p><span id="twitter-text">Twitter</span>: <a href="https://twitter.com/WictorKihlbaum">twitter.com/WictorKihlbaum</a></p>
+                <p><span id="gmail-text">Gmail</span>: wictor.kihlbaum (at) gmail.com</p>
+            </div>
+            
+        </main>
+        <footer>
+        	<p class="footer-text">Contact</p>
+            <div id="contact-circles-container">
+                <a href="https://www.facebook.com/wictor.kihlbaum">
+                    <div class="contact-circles" id="facebook-circle"></div>
+                </a>
+                <a href="https://twitter.com/WictorKihlbaum">
+                    <div class="contact-circles" id="twitter-circle"></div>
+                </a>
+                <div class="contact-circles" id="google-circle" data-clipboard-text="wictor.kihlbaum@gmail.com" title="Copy email to clipboard"></div>
+            </div>
+            <p id="copyright">© 2016 Webbteknik 2 Projekt</p>
+        </footer>
+        
+        <!-- Google Platform Library -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        
+        <script>
+	   
+	     function onSignIn(googleUser) {
+	   		var profile = googleUser.getBasicProfile();
+		  	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+		  	console.log('Name: ' + profile.getName());
+		  	console.log('Image URL: ' + profile.getImageUrl());
+		  	console.log('Email: ' + profile.getEmail());
+			
+			var profileImage = document.getElementById('profile-image');
+			profileImage.src = profile.getImageUrl();
+			profileImage.style.display = 'inline';
+		 }
+		
+		 function signOut() {
+    		var auth2 = gapi.auth2.getAuthInstance();
+    		auth2.signOut().then(function() {
+      			console.log('User signed out.');
+    		});
+			
+			auth2.disconnect();
+  		 }
+		
+	    </script>
+      
+        <script src="https://apis.google.com/js/client.js"></script>
+        
+        <!-- Clipboard JS -->
+        <script src="js/clipboard.js-master/dist/clipboard.min.js"></script>
+        <script src="js/ClipboardClass.js"></script>
+        
+    </body>
+</html>
