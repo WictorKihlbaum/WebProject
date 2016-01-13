@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="google-signin-scope" content="https://www.googleapis.com/auth/drive profile email">
+        <meta name="google-signin-client_id" content="788591829115-1uq193qnm8r72ujqej7l3hdj558hj7ej.apps.googleusercontent.com">
+		<title>Picme Edit Local Image</title>
+        <!-- Skeleton CSS Framework -->
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="css/skeleton.css">
+        <!-- Mainstyle CSS -->
+        <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+        <!-- Navigation CSS -->
+        <link rel="stylesheet" type="text/css" href="css/nav.css">
+        <!-- Button-styles -->
+        <link rel="stylesheet" type="text/css" href="css/buttons.css">
+        <!-- Local Image Subpage CSS -->
+        <link rel="stylesheet" type="text/css" href="css/localimage.css">
+        <!-- Adobe Typekit Fonts (Place in header according to Adobe) -->
+        <script src="https://use.typekit.net/fni2mbz.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	</head>
+	<body>
+    	<header>
+        	<img src="#" id="profile-image" title="Profile picture" alt="Profile picture" />
+            <h1 id="website-name">Picme</h1>
+            <!-- Google login/logout button -->
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <a href="#" id="signout-button">Sign out</a>
+        </header>
+        <main>
+        
+        	<nav>
+            	<ul>
+                	<li id="active"><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div id="step-by-step">
+                <img src="images/close_button_small.png" alt="X" title="Close window" id="close-window" />
+                <ul>
+                    <li>1. Press "Upload image" to choose which image you want to edit.</li>
+                    <li>2. Press "Edit image". The Aviary editor will automatically open.</li>
+                    <li>3. Press "Apply" in the upper-right corner of the editor after you are done with each tool.</li>
+                    <li>4. Press "Save" in the same corner when you are done and then close the editor.</li>
+                    <li>5. Press "Download image" to download your edited image to your computer.</li>
+                </ul>
+            </div>
+            
+            <div id="image-container">
+                <div class="upload">
+                	<label for="input" class="label-class">
+                        Upload image <!-- I had to add "onchange" inline aswell to make it work -->
+                        <input type="file" id="input" onchange="UploadImage.handleFiles(this.files)" />
+                    </label>
+                </div>
+                <img src="images/no_image_chosen.jpg" alt="Image preview" id="editable-image" />
+            </div>
+            <p>
+                <a href="#" class="button-class button-size-large edit-button" id="edit">Edit image</a>
+			</p>
+            
+            <div id="download-button-field">
+            	<!-- Download-button will be added from UploadImage.js -->	
+            </div>
+            
+            <a href="index.html" class="button-class button-size-large go-back-button">Go back</a>
+            
+        </main>
+        <footer>
+        	<p class="footer-text">Contact</p>
+            <div id="contact-circles-container">
+                <a href="https://www.facebook.com/wictor.kihlbaum">
+                    <div class="contact-circles" id="facebook-circle"></div>
+                </a>
+                <a href="https://twitter.com/WictorKihlbaum">
+                    <div class="contact-circles" id="twitter-circle"></div>
+                </a>
+                <div class="contact-circles" id="google-circle" data-clipboard-text="wictor.kihlbaum@gmail.com" title="Copy email to clipboard"></div>
+            </div>
+            <p id="copyright">© 2016 Webbteknik 2 Projekt</p>
+        </footer>
+        
+        <script>
+	   
+			function onSignIn(googleUser) {
+				SignEvent.signIn(googleUser);
+			}
+		
+	    </script>
+      
+        <!-- Load Feather code -->
+		<script type="text/javascript" src="http://feather.aviary.com/imaging/v2/editor.js"></script>
+        <!-- AviaryClass JS -->
+        <script src="js/AviaryClass.js"></script>
+        <!-- Upload Local Image JS -->
+        <script src="js/UploadImage.js"></script>
+        <!-- Signin/out-events JS -->
+        <script src="js/SignEvent.js"></script>
+        <!-- Clipboard JS -->
+        <script src="js/clipboard.js-master/dist/clipboard.min.js"></script>
+        <script src="js/ClipboardClass.js"></script>
+        <!-- Google Platform Library -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        
+    </body>
+</html>
